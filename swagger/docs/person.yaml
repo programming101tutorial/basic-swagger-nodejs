@@ -1,0 +1,133 @@
+/person:
+  post:
+    tags:
+      - person
+    description: get person data what you input
+    summary: get person
+    requestBody:
+      content:
+        application/x-www-form-urlencoded:
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+              gender:
+                type: string
+                enum: [Male, Female, other]
+                example: Male
+            required:
+              - name
+        application/json:
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+              gender:
+                type: string
+                enum: [Male, Female, other]
+                example: Male
+          examples:
+            Mengty:
+              value:
+                name: Mengty
+                gender: Male
+            Lakayata:
+              value:
+                name: Lakayata
+                gender: other
+    responses:
+      200:
+        description: get person data
+        content:
+          application/json:
+            schema:
+              type: object
+            example:
+              name: Mengty
+              gender: Male
+  put:
+    tags:
+      - person
+    description: get person data what you input
+    summary: get person
+    requestBody:
+      content:
+        application/x-www-form-urlencoded:
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+              gender:
+                type: string
+                enum: [Male, Female, other]
+                example: Male
+        application/json:
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+              gender:
+                type: string
+                enum: [Male, Female, other]
+                example: Male
+          examples:
+            Mengty:
+              value:
+                name: Mengty
+                gender: Male
+            Lakayata:
+              value:
+                name: Lakayata
+                gender: other
+    responses:
+      200:
+        description: get person data
+        content:
+          application/json:
+            schema:
+              type: object
+            example:
+              name: Mengty
+              gender: Male
+/person/{id}:
+  get:
+    tags:
+      - person
+    description: get person data 
+    summary: get person
+    parameters:
+      - in: header
+        name: x-custom
+        schema:
+          type: string
+        required: true
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+        description: Numeric id of person to get
+      - in: query
+        name: offset
+        schema:
+          type: integer
+        description: offset data
+      - in: query
+        name: limit
+        schema:
+          type: integer
+        description: limit data
+    responses:
+      200:
+        description: get person data
+        content:
+          application/json:
+            schema:
+              type: object
+            example:
+              name: Mengty
+              gender: Male
